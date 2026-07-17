@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Canvas Cards Importer",
+  "version": "1.3.0",
+  "description": "Imports questions and answers visible on Canvas pages into Canvas Cards running locally.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://localhost:8787/*"],
+  "action": { "default_title": "Import Canvas cards" },
+  "background": { "service_worker": "background.js", "type": "module" }
+}

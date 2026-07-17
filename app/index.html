@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Canvas Cards</title>
+  <link rel="stylesheet" href="/style.css?v=12">
+</head>
+<body>
+  <main>
+    <header>
+      <a class="brand" href="#">CANVAS CARDS</a>
+      <nav class="settings" aria-label="Display settings">
+        <button type="button" id="font-toggle" class="text-button" aria-pressed="false">Dyslexic font</button>
+        <button type="button" id="theme-toggle" class="text-button" aria-pressed="false">Dark mode</button>
+      </nav>
+    </header>
+
+    <section class="session-bar" aria-label="Study sessions">
+      <div><span class="label">CURRENT SESSION</span><strong id="current-session">Unsaved session</strong><span id="dirty-mark" class="dirty" hidden>Unsaved changes</span></div>
+      <div class="session-actions">
+        <span class="session-select-wrap">
+          <select id="session-select" aria-label="Saved sessions"><option value="">No saved sessions</option></select>
+          <svg class="select-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg>
+        </span>
+        <button type="button" id="new-session" class="text-button">New</button>
+        <button type="button" id="save-session" class="text-button">Save</button>
+        <button type="button" id="load-session" class="text-button">Load</button>
+        <button type="button" id="rename-session" class="text-button">Rename</button>
+      </div>
+      <p id="session-error" class="session-error" hidden></p>
+    </section>
+
+    <section class="intro">
+      <p class="label">LOCAL STUDY DECK</p>
+      <h1 id="count">Loading cards…</h1>
+      <div class="filter-bar" role="group" aria-label="Filter cards">
+        <button type="button" class="filter active" data-filter="all">All <span id="all-count">0</span></button>
+        <button type="button" class="filter" data-filter="dont_know">Don’t know <span id="dont-count">0</span></button>
+        <button type="button" class="filter" data-filter="known">Know <span id="known-count">0</span></button>
+      </div>
+    </section>
+
+    <section class="study" aria-label="Study card">
+      <div id="empty" class="empty" hidden>
+        <p class="label">NOTHING HERE</p>
+        <h2>No cards match this filter.</h2>
+      </div>
+      <article id="card" class="card" tabindex="0" role="button" aria-label="Reveal answer">
+        <div class="card-inner">
+          <div class="card-face card-front" aria-hidden="false">
+            <div class="card-meta"><span>QUESTION</span><span id="card-status-front"></span></div>
+            <p id="card-front-text"></p>
+            <small>Click or press Space to reveal</small>
+          </div>
+          <div class="card-face card-back" aria-hidden="true">
+            <div class="card-meta"><span>ANSWER</span><span id="card-status-back"></span></div>
+            <p id="card-back-text"></p>
+            <small>Click or press Space to see the question</small>
+          </div>
+        </div>
+      </article>
+      <div id="rating-controls" class="rating-controls">
+        <button type="button" id="dont-know" class="outline">Didn’t know <kbd>1</kbd></button>
+        <button type="button" id="know" class="solid">Know <kbd>2</kbd></button>
+      </div>
+      <div class="navigation">
+        <button type="button" id="previous" class="text-button">← Previous</button>
+        <span id="position"></span>
+        <button type="button" id="next" class="text-button">Next →</button>
+      </div>
+      <div class="shuffle-row"><button type="button" id="shuffle" class="outline">Shuffle</button></div>
+    </section>
+
+    <section id="add" class="add">
+      <div><p class="label">ADD YOUR OWN</p><h2>New card</h2></div>
+      <form id="form">
+        <label>Question<textarea id="front" required placeholder="What do you want to remember?"></textarea></label>
+        <label>Answer<textarea id="back" required placeholder="Answer or explanation"></textarea></label>
+        <button class="solid">Add card</button>
+      </form>
+    </section>
+
+    <section class="deck">
+      <div class="deck-head"><h2>Cards</h2><button type="button" id="remove-all" class="text-button" hidden>Remove all</button></div>
+      <div id="list"></div>
+    </section>
+  </main>
+
+  <dialog id="rename-dialog" aria-labelledby="rename-title">
+    <form id="rename-form">
+      <p class="label">SAVED SESSION</p>
+      <h2 id="rename-title">Rename session</h2>
+      <label for="rename-input">Session name</label>
+      <input id="rename-input" name="name" type="text" autocomplete="off" maxlength="80" required>
+      <div class="dialog-actions">
+        <button type="button" id="rename-cancel" class="outline">Cancel</button>
+        <button type="submit" class="solid">Rename</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="site-footer">by JC Antor</footer>
+
+  <script src="/app.js?v=12"></script>
+</body>
+</html>
