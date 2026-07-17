@@ -4,6 +4,16 @@ I AM SICK OF ADS AND PAID WEBAPPS FOR FLASHCARDS.
 
 Canvas Cards is a free, local flashcard app for studying questions and verified answers from Canvas quiz review pages. The web app and card data run on your computer.
 
+It works by getting questions and verified answers from Canvas quiz review pages via a Google Chrome extension.
+
+## Preview
+
+The study view includes filters, named sessions, card navigation, and the current card in one focused workspace.
+
+![Canvas Cards study view in light mode](docs/screenshots/study-light.jpg)
+
+![Canvas Cards study view in dark mode](docs/screenshots/study-dark.jpg)
+
 ## Requirements
 
 - Node.js 18 or newer
